@@ -13,14 +13,14 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import logika.HerniPlan;
 import logika.Item;
-import util.ObserverZmenyHrace;
+import util.ObserverPlayerChange;
 
 /**
  * Vytváří zobrazení inventáře
  *
  * @author MarleyWins
  */
-public class RightPane implements ObserverZmenyHrace {
+public class RightPane implements ObserverPlayerChange {
 
     private HerniPlan plan;
     private GridPane imageGrid;

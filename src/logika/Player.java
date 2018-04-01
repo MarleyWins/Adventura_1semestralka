@@ -29,14 +29,14 @@ import util.*;
  * @author MarleyWins
  * @version 1.0
  */
-public class Player implements SubjektZmenyHrace{
+public class Player implements SubjektPlayerChange{
 
     private String name;
     private int inventorySize;
     private Set<Item> inventory;
     private int loyaltyRobCt;
     private int loyaltyHumCt;
-    private List<ObserverZmenyHrace> observerListPlayer;
+    private List<ObserverPlayerChange> observerListPlayer;
 
     /**
      * Constructor for the Player class. Inicializing all used variables.
@@ -182,19 +182,19 @@ public class Player implements SubjektZmenyHrace{
     }
 
     @Override
-    public void zaregistrujPozorovatele(ObserverZmenyHrace pozorovatel) {
+    public void zaregistrujPozorovatele(ObserverPlayerChange pozorovatel) {
         System.out.println("Registrace hrace");
         observerListPlayer.add(pozorovatel);
     }
 
     @Override
-    public void odregistrujPozorovatele(ObserverZmenyHrace pozorovatel) {
+    public void odregistrujPozorovatele(ObserverPlayerChange pozorovatel) {
         observerListPlayer.remove(pozorovatel);
     }
 
     @Override
     public void notifyObservers() {
-        for(ObserverZmenyHrace observer : observerListPlayer){
+        for(ObserverPlayerChange observer : observerListPlayer){
             observer.refresh();
         }
     }
