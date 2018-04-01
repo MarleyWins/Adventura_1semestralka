@@ -24,7 +24,7 @@ public class TopPane implements ObserverZmenyProstoru {
     
     private HerniPlan plan;
     private HBox hBox;
-    private AnchorPane mapPane;
+    private AnchorPane mapAnchorPane;
     private Circle circle;
     
     public TopPane (HerniPlan plan){
@@ -32,23 +32,25 @@ public class TopPane implements ObserverZmenyProstoru {
         hBox = new HBox();
         init();
     }
-    
+    /**
+     * baka, Inicializuje obash panelu.
+     */
     private void init(){
         plan.zaregistrujPozorovatele(this);
         hBox.setAlignment(Pos.CENTER);
         Image mapImage = new Image(DataStream.class.getResourceAsStream("/data/map.jpg"), 900.00 , 300.00, false, true);
         ImageView map = new ImageView(mapImage);
         
-        mapPane = new AnchorPane();
-        mapPane.getChildren().add(map);
+        mapAnchorPane = new AnchorPane();
+        mapAnchorPane.getChildren().add(map);
         
         circle = new Circle(10, Paint.valueOf("blue"));
         AnchorPane.setTopAnchor(circle, plan.getAktualniProstor().getTopAnchor());
         AnchorPane.setLeftAnchor(circle, plan.getAktualniProstor().getLeftAnchor());
         circle.setVisible(true);
         
-        mapPane.getChildren().add(circle);
-        hBox.getChildren().add(mapPane);      
+        mapAnchorPane.getChildren().add(circle);
+        hBox.getChildren().add(mapAnchorPane);      
     }
     /**
      * Vraci panel ke zpracovani
@@ -61,10 +63,10 @@ public class TopPane implements ObserverZmenyProstoru {
 
     @Override
     public void refresh() {
-        mapPane.getChildren().remove(circle);        
+        mapAnchorPane.getChildren().remove(circle);        
         AnchorPane.setTopAnchor(circle, plan.getAktualniProstor().getTopAnchor());
         AnchorPane.setLeftAnchor(circle, plan.getAktualniProstor().getLeftAnchor());        
-        mapPane.getChildren().add(circle);
+        mapAnchorPane.getChildren().add(circle);
         
     }
         
