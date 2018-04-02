@@ -55,6 +55,7 @@ public class CommandDrop implements IPrikaz {
             if (!plan.getAktualniProstor().addItem(plan.getPlayer().removeItem(target))) {
                 return "***Something went wrong.***";
             } else {
+                plan.notifyObservers();
                 return target + " was dropped from your inventory " + plan.getPlayer().getName();
             }
 

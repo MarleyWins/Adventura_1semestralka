@@ -43,6 +43,7 @@ public class Item {
      *
      * @param name - name of the item.
      * @param info - lore description.
+     * @param imageName - name of image in folder data
      */
     public Item(String name, String info, String imageName) {
         this.name = name;
@@ -61,6 +62,7 @@ public class Item {
      * @param type - ingame fraction, R/H/N - Robots/Humans/Neutral
      * @param loyaltyGain - gained loyalty points
      * @param bonusGain - gained bonus points from NPC
+     * @param imageName - name of image in folder data
      */
     public Item(String name, String info, char type, int loyaltyGain, int bonusGain, String imageName) {
         this.name = name;

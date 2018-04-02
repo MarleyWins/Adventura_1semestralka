@@ -48,7 +48,7 @@ public class HerniPlan implements SubjektZmenyProstoru{
         // vytvářejí se jednotlivé prostory  
       
         Prostor apartment = new Prostor("apartment", "One room apartment. You can see pretty messy table with some penciles and sheets of paper (apparently you did some drawings last night). ", 90.00, 665.00);
-        Item penciles = new Item("pencils", "old", 'h', 5, 3);
+        Item penciles = new Item("pencils", "old", 'h', 5, 3,"pencils.png");
         apartment.addItem(penciles);
         Npc eDI = new Npc("EDI", 'r', "Hello my old friend. I seem to be lost ... What am I supposed to do without you.", 3, true);
         eDI.addConversationOpt(1, "Seek some new technology.");
@@ -57,17 +57,17 @@ public class HerniPlan implements SubjektZmenyProstoru{
         eDI.addConversationOpt(4, "I don't know.");
         eDI.addConversationOpt(5, "Never mind, just don't forget your place!");
         apartment.addNpc(eDI);
-        Item sketches = new Item("Sketches", "Some drawings.", 'h', 5, 3);
+        Item sketches = new Item("Sketches", "Some drawings.", 'h', 5, 3,"unopudge.png");
         apartment.addItem(sketches);
-        Item table = new Item("table", "Old plastic table");
+        Item table = new Item("table", "Old plastic table","table.png");
         apartment.addItem(table);
         
         Prostor ruinedApartement = new Prostor("RuinedApartement", "Dirty ruined apartment where no one lives. But there is some screwdriver on the floor…", 70.00, 710.00);
-        Item screwdriver = new Item("Screwdriver", "Weird looking screwdriver", 'r', 8, 3);
+        Item screwdriver = new Item("Screwdriver", "Weird looking screwdriver", 'r', 8, 3,"screw.png");
         ruinedApartement.addItem(screwdriver);
         
         Prostor square = new Prostor("Square", "Massive open space where is a statue in the center.", 120.00, 765.00);
-        Item angelStat = new Item("AngelStatue", "Metalic angle statue holding a shiny orb looking technology. Symbolizes peace between robots and humans.");
+        Item angelStat = new Item("AngelStatue", "Metalic angle statue holding a shiny orb looking technology. Symbolizes peace between robots and humans.","angel.jpg");
         square.addItem(angelStat);
         Npc krista = new Npc("Krista", 'h', "There is no peace between us and robots, is no there?", 3, true);
         krista.addConversationOpt(1, "No, probably not.");
@@ -83,9 +83,9 @@ public class HerniPlan implements SubjektZmenyProstoru{
         ruinedApartement.setVychod(apartment);
         
         Prostor crwdStreet = new Prostor("CrowdedStreet", "Noisy street full of vendors trying to sell their goods.", 120.00, 765.00);
-        Item ribbon = new Item("Ribbon", "Bright red ribbon.", 'h', 8, 5);
+        Item ribbon = new Item("Ribbon", "Bright red ribbon.", 'h', 8, 5,"redribbon.jpg");
         crwdStreet.addItem(ribbon);
-        Item coin = new Item("Coin", "BitCoin", 'r', 8, 5);
+        Item coin = new Item("Coin", "BitCoin", 'r', 8, 5,"bitcoin.png");
         crwdStreet.addItem(coin);
         
         Npc lois = new Npc("Lois", 'h', "Bonjur, would you like to buy something?", 3, false);
@@ -105,18 +105,18 @@ public class HerniPlan implements SubjektZmenyProstoru{
         crwdStreet.addNpc(aki);
         
         Prostor subway = new Prostor("Subway", "Old subway station. Was not used for a long time.", 250.00, 920.00);
-        Item laptop = new Item("Lenovo", "Not working anymore", 'h', 3, 3);
+        Item laptop = new Item("Lenovo", "Not working anymore", 'h', 3, 3,"laputopu.png");
         subway.addItem(laptop);
-        Item redOrb = new Item("RedOrb", "Bright red light.", 'r', 3, 3);
+        Item redOrb = new Item("RedOrb", "Bright red light.", 'r', 3, 3,"redorb.png");
         subway.addItem(redOrb);
-        Item digiPainting = new Item("DigitalPainting", "Lively picture of a robot dancer.");
+        Item digiPainting = new Item("DigitalPainting", "Lively picture of a robot dancer.","robodancer.jpg");
         subway.addItem(digiPainting);
         
         square.setVychod(subway);
         square.setVychod(crwdStreet);
         
         Prostor slums = new Prostor("Slums", "Doesn't look good .. There is lot of sick people, and one poor looking man.", 200.00, 820.00);
-        Item garbage = new Item("GarbagePile", "Piles and piles of garbage");
+        Item garbage = new Item("GarbagePile", "Piles and piles of garbage","garbage.jpg");
         slums.addItem(garbage);
         Npc gil = new Npc("Gil", 'h', "*Cough* Hey you *cough* please could you help me?", 4, true);
         gil.addConversationOpt(1, "Ignore him");
@@ -142,7 +142,7 @@ public class HerniPlan implements SubjektZmenyProstoru{
         emptyStr.setVychod(crwdStreet);
         
         Prostor tunnel = new Prostor("Tunnel", "Dark and wet tunnel. With someone brave and someone plastic.", 305.00, 675.00);
-        Item moss = new Item("Moss", "Slimy .... but ever present");
+        Item moss = new Item("Moss", "Slimy .... but ever present","slime.gif");
         tunnel.addItem(moss);
         Npc amy = new Npc("AmyPond", 'h', "Hey ... you remind me of someone ... someone with a box.", 10, true);
         amy.addConversationOpt(1, "CyberMan?");
@@ -160,7 +160,7 @@ public class HerniPlan implements SubjektZmenyProstoru{
         tunnel.addNpc(rorry);
         
         Prostor abandonedTrain = new Prostor("AbandonedTrain", "Broken, scratched train. And it stinks in here.", 300.00, 850.00);
-        Item goldenWatch = new Item("GoldenWatch", "The clock is stopped at 5:25 AM July 16th 1945.", 'h', 10, 10);
+        Item goldenWatch = new Item("GoldenWatch", "The clock is stopped at 5:25 AM July 16th 1945.", 'h', 10, 10,"watch.png");
         abandonedTrain.addItem(goldenWatch);
         
         subway.setVychod(tunnel);

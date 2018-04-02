@@ -46,7 +46,9 @@ public class LeftPane {
     public VBox getLeftPane() {
         return vBox;
     }
-    
+    /**
+     * Uzamkne obsah
+     */
     public void lock(){
         vBox.setDisable(true);
     }

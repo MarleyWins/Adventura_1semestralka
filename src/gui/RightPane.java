@@ -102,6 +102,9 @@ public class RightPane implements ObserverPlayerChange {
         loadResources();
     }
     
+    /**
+     * Uzamkne obsah
+     */
     public void lock(){
         vBox.setDisable(true);
     }

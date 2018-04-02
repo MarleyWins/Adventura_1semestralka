@@ -172,19 +172,16 @@ public class Start extends Application {
 
         MenuItem helpItem = new MenuItem("Help");
         helpItem.setAccelerator(KeyCombination.keyCombination("CTRL+I"));
-        helpItem.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                WebView browser = new WebView();
-                Scene helpScene = new Scene(browser);
-                Stage helpStage = new Stage();
-                helpStage.setTitle("Help page");
-                helpStage.setScene(helpScene);
-                URL url = DataStream.class.getResource("/data/napoveda.html");
-                browser.getEngine().load(url.toExternalForm());
-                
-                helpStage.show();
-            }
+        helpItem.setOnAction((ActionEvent e) -> {
+            WebView browser = new WebView();
+            Scene helpScene = new Scene(browser);
+            Stage helpStage = new Stage();
+            helpStage.setTitle("Help page");
+            helpStage.setScene(helpScene);
+            URL url = DataStream.class.getResource("/data/napoveda.html");
+            browser.getEngine().load(url.toExternalForm());
+            
+            helpStage.show();
         });
         
         help.getItems().add(helpItem);
