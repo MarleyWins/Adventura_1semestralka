@@ -101,5 +101,9 @@ public class RightPane implements ObserverPlayerChange {
         imageGrid.getChildren().clear();
         loadResources();
     }
+    
+    public void lock(){
+        vBox.setDisable(true);
+    }
 
 }

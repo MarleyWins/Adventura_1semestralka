@@ -2,12 +2,15 @@
  * Kontrola kódování: Příliš žluťoučký kůň úpěl ďábelské ódy. */
 package main;
 
+import data.DataStream;
 import gui.LeftPane;
 import gui.RightPane;
 import gui.TopPane;
+import java.net.URL;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -25,6 +28,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import logika.*;
 import uiText.TextoveRozhrani;
@@ -46,7 +50,9 @@ public class Start extends Application {
     private BorderPane border;
     private static TextArea textArea;
     private FlowPane bottomPane;
-    private TextField textField;
+    private static TextField textField;
+    private static LeftPane leftPane;
+    private static RightPane rightPane;
     
 
     /**
@@ -93,10 +99,10 @@ public class Start extends Application {
         createBottomPane();
         border.setBottom(bottomPane);
         
-        LeftPane leftPane = new LeftPane(hra.getHerniPlan());
+        leftPane = new LeftPane(hra.getHerniPlan());
         border.setLeft(leftPane.getLeftPane());
         
-        RightPane rightPane = new RightPane(hra.getHerniPlan());
+        rightPane = new RightPane(hra.getHerniPlan());
         border.setRight(rightPane.getSection());
         
         TopPane topPane = new TopPane(hra.getHerniPlan());
@@ -164,6 +170,25 @@ public class Start extends Application {
 
         file.getItems().addAll(newGame, new SeparatorMenuItem(), forceEnd);
 
+        MenuItem helpItem = new MenuItem("Help");
+        helpItem.setAccelerator(KeyCombination.keyCombination("CTRL+I"));
+        helpItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                WebView browser = new WebView();
+                Scene helpScene = new Scene(browser);
+                Stage helpStage = new Stage();
+                helpStage.setTitle("Help page");
+                helpStage.setScene(helpScene);
+                URL url = DataStream.class.getResource("/data/napoveda.html");
+                browser.getEngine().load(url.toExternalForm());
+                
+                helpStage.show();
+            }
+        });
+        
+        help.getItems().add(helpItem);
+        
     }
 /**
  * Vrací právě běžící variantu hry
@@ -197,12 +222,19 @@ public class Start extends Application {
             }
         });
     }
+    
 /**
  * Přidává nový řádek na konec zobrazovaného textu
  * @param text text k vypsání
  */
     public static void addToText(String text) {
         textArea.appendText(text);
+    }
+    
+    public static void lockAll(){
+       leftPane.lock();
+       textField.setEditable(false);
+       rightPane.lock();
     }
 
 }

@@ -17,40 +17,39 @@
 package logika;
 
 /**
- * Class EndingSequence is called at the end of the game.
- * Results in case specific ending.
- * 
+ * Class EndingSequence is called at the end of the game. Results in case
+ * specific ending.
+ *
  * @author MarleyWins
  */
 public class EndingSequence {
-/**
- * Method stars final decision making. Enables to choose final decision. 
- * 
- * @param player - current player
- * @param interface2 - relyes link on second text interface
- * @return message to player
- */
+
+    /**
+     * Method stars final decision making. Enables to choose final decision.
+     *
+     * @param player - current player
+     * @param interface2 - relyes link on second text interface
+     * @return message to player
+     */
     public String endingText(Player player, SecondInterface interface2) {
-        
-        if(player.getLoyaltyHumCt() + player.getLoyaltyRobCt() == 0){
-            return "You are a true neutral. But you are also useless to this world. I expell you " + player.getName() + "." 
+
+        if (player.getLoyaltyHumCt() + player.getLoyaltyRobCt() == 0) {
+            return "You are a true neutral. But you are also useless to this world. I expell you " + player.getName() + "."
                     + "\n             --\"Hal 9000\"";
         }
 
-        interface2.printPrompt("Now you have to make your final decision. Who are you?!");
-        interface2.printPrompt("\n(1) I want to be a robot!");
-        interface2.printPrompt("\n(2) I want to remain neutral ...");
-        interface2.printPrompt("\n(3) I want to be a human!");
-
-        interface2.printPrompt("\nYour choice: ");
-        
+        String endBegun = "Now you have to make your final decision. Who are you?!";
+        endBegun = (endBegun + "\n(1) I want to be a robot!");
+        endBegun = (endBegun + "\n(2) I want to remain neutral ...");
+        endBegun = (endBegun + "\n(3) I want to be a human!\n");
+        //endBegun = (endBegun + "\nYour choice: \n");
 
         while (true) {
             try {
-                int choice = Integer.parseInt(interface2.useInput("Who are you?"));
+                int choice = Integer.parseInt(interface2.useInput(endBegun + "Who are you?"));
                 if (choice > 3 || choice < 1) {
                     interface2.printPrompt("\n*** Only use numbers between 1-3 " + player.getName() + "! ***\n");
-                } else {                    
+                } else {
                     switch (choice) {
 
                         case 1:
@@ -73,13 +72,14 @@ public class EndingSequence {
         }
 
     }
-/**
- * Method for robot ending.
- * 
- * @param robots - total points in robots
- * @param humans - total points in humans
- * @return good or bad outro
- */
+
+    /**
+     * Method for robot ending.
+     *
+     * @param robots - total points in robots
+     * @param humans - total points in humans
+     * @return good or bad outro
+     */
     private String robotEnds(int robots, int humans) {
 
         String goodOutro;
@@ -88,8 +88,6 @@ public class EndingSequence {
         goodOutro = "Wery well. You are robot now.";
         badOutro = "You have died! *Malfuntion in core procedures, more human than robot.*";
 
-        
-        
         if (robots >= humans) {
 
             return goodOutro;
@@ -99,12 +97,14 @@ public class EndingSequence {
         }
 
     }
-/**
- * Method for neutral ending.
- * @param robots - total points in robots
- * @param humans - total points in humans
- * @return good or bad outro
- */
+
+    /**
+     * Method for neutral ending.
+     *
+     * @param robots - total points in robots
+     * @param humans - total points in humans
+     * @return good or bad outro
+     */
     private String neutralEnds(int robots, int humans) {
 
         String goodOutro;
@@ -119,12 +119,14 @@ public class EndingSequence {
             return badOutro;
         }
     }
-/**
- * Method for human ending.
- * @param robots - total points in robots
- * @param humans - total points in humans
- * @return good or bad outro
- */
+
+    /**
+     * Method for human ending.
+     *
+     * @param robots - total points in robots
+     * @param humans - total points in humans
+     * @return good or bad outro
+     */
     private String hoomanEnds(int robots, int humans) {
         String goodOutro;
         String badOutro;

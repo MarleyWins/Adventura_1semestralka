@@ -46,5 +46,9 @@ public class LeftPane {
     public VBox getLeftPane() {
         return vBox;
     }
+    
+    public void lock(){
+        vBox.setDisable(true);
+    }
 
 }

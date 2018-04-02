@@ -65,7 +65,7 @@ public class SectionExits implements ObserverZmenyProstoru {
                 String clickedName = exitList.getSelectionModel().getSelectedItem();
                 //System.out.println(clickedName);
                 String text = plan.getHra().zpracujPrikaz("go " + clickedName);
-                Start.addToText("\n go " + clickedName + "\n");
+                //Start.addToText("\n go " + clickedName + "\n");
                 Start.addToText("\n" + text + "\n");
             }
         });

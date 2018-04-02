@@ -44,11 +44,11 @@ public class Item {
      * @param name - name of the item.
      * @param info - lore description.
      */
-    public Item(String name, String info) {
+    public Item(String name, String info, String imageName) {
         this.name = name;
         this.info = info;
         this.collectable = false;
-        this.picture = new ImageView(new Image((DataStream.class.getResourceAsStream("/data/"+"icon.png")), dimensions, dimensions, false, false));
+        this.picture = new ImageView(new Image((DataStream.class.getResourceAsStream("/data/"+imageName)), dimensions, dimensions, false, false));
         Tooltip.install(picture, new Tooltip(name + "\n" + info));
 
     }
@@ -62,14 +62,14 @@ public class Item {
      * @param loyaltyGain - gained loyalty points
      * @param bonusGain - gained bonus points from NPC
      */
-    public Item(String name, String info, char type, int loyaltyGain, int bonusGain) {
+    public Item(String name, String info, char type, int loyaltyGain, int bonusGain, String imageName) {
         this.name = name;
         this.info = info;
         this.type = type;
         this.loyaltyGain = loyaltyGain;
         this.bonusGain = bonusGain;
         this.collectable = true;
-        this.picture = new ImageView(new Image((DataStream.class.getResourceAsStream("/data/"+"icon.png")), dimensions, dimensions, false, false));
+        this.picture = new ImageView(new Image((DataStream.class.getResourceAsStream("/data/"+ imageName)), dimensions, dimensions, false, false));
         Tooltip.install(picture, new Tooltip(name + "\n" + info));
     }
     

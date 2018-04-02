@@ -183,7 +183,7 @@ public class Player implements SubjektPlayerChange{
 
     @Override
     public void zaregistrujPozorovatele(ObserverPlayerChange pozorovatel) {
-        System.out.println("Registrace hrace");
+        //System.out.println("Registrace hrace");
         observerListPlayer.add(pozorovatel);
     }
 

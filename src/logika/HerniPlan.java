@@ -2,6 +2,7 @@ package logika;
 
 import java.util.ArrayList;
 import java.util.List;
+import main.Start;
 import util.ObserverZmenyProstoru;
 import util.SubjektZmenyProstoru;
 
@@ -179,7 +180,7 @@ public class HerniPlan implements SubjektZmenyProstoru{
         
         emptyStr.setVychod(workShop);
         
-        Prostor lab = new Prostor("Laboratory", "Luthors's laboratory. And you now Lex is always lonely.", 50.00, 50.00);
+        Prostor lab = new Prostor("Laboratory", "Luthors's laboratory. And you now Lex is always lonely.", 320.00, 440.00);
         Npc lex = new Npc("LexLuthor", 'h', "I dont suppose you have any cryptonite", 15, true);
         lex.addConversationOpt(1, "I know something that could find it.");
         lex.addConversationOpt(2, "Sure, my friend Rorry might have some.");
@@ -216,6 +217,10 @@ public class HerniPlan implements SubjektZmenyProstoru{
      */
     public void setAktualniProstor(Prostor prostor) {
        aktualniProstor = prostor;
+       if(aktualniProstor == victoryRoom && Start.getVersion().equals("GUI")){
+           secondInter.printPrompt(hra.vratEpilog());
+           hra.setKonecHry(false);
+       }
        this.notifyObservers();
     }
 

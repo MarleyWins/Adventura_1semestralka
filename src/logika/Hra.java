@@ -1,5 +1,7 @@
 package logika;
 
+import main.Start;
+
 /**
  * Třída Hra - třída představující logiku adventury.
  *
@@ -13,8 +15,8 @@ package logika;
  */
 public class Hra implements IHra {
 
-    private SeznamPrikazu platnePrikazy;    // obsahuje seznam přípustných příkazů
-    private HerniPlan herniPlan;
+    private final SeznamPrikazu platnePrikazy;    // obsahuje seznam přípustných příkazů
+    private final HerniPlan herniPlan;
     private boolean konecHry = false;
     private final EndingSequence ending;
 
@@ -64,7 +66,6 @@ public class Hra implements IHra {
     public String vratEpilog() {
 
         if (herniPlan.getAktualniProstor().equals(herniPlan.getVictoryRoom())) {
-                                    
             return ending.endingText(herniPlan.getPlayer(), herniPlan.getInterface2());
         } else {
             return "Thank you for playing. Geronimo";
@@ -112,7 +113,12 @@ public class Hra implements IHra {
      * @param konecHry hodnota false= konec hry, true = hra pokračuje
      */
     void setKonecHry(boolean konecHry) {
-        this.konecHry = konecHry;
+        if (Start.getVersion().equals("GUI")) {
+            this.konecHry = konecHry;
+            Start.lockAll();
+        } else {
+            this.konecHry = konecHry;
+        }
     }
 
     /**
