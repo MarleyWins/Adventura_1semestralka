@@ -38,7 +38,7 @@ public class TopPane implements ObserverZmenyProstoru {
     private void init(){
         plan.zaregistrujPozorovatele(this);
         hBox.setAlignment(Pos.CENTER);
-        Image mapImage = new Image(DataStream.class.getResourceAsStream("/data/map.jpg"), 900.00 , 300.00, false, true);
+        Image mapImage = new Image(DataStream.class.getResourceAsStream("/data/cross_map.jpg"), 1000.00 , 350.00, false, true);
         ImageView map = new ImageView(mapImage);
         
         mapAnchorPane = new AnchorPane();
