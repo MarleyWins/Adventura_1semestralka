@@ -25,17 +25,19 @@ public class HerniPlan implements SubjektZmenyProstoru{
     private final HugHitResolver hhResolver;
     private Prostor victoryRoom;
     private List<ObserverZmenyProstoru> observerListProstor;
+    private Hra hra;
     
      /**
      *  Konstruktor který vytváří jednotlivé prostory a propojuje je pomocí východů.
      *  Jako výchozí aktuální prostor nastaví halu.
      */
-    public HerniPlan() {
+    public HerniPlan(Hra hra) {
         zalozProstoryHry();
         player = new Player();
         secondInter = new SecondInterface();
         hhResolver = new HugHitResolver();
         observerListProstor = new ArrayList<>();
+        this.hra = hra;
     }
     /**
      *  Vytváří jednotlivé prostory a propojuje je pomocí východů.
@@ -44,7 +46,7 @@ public class HerniPlan implements SubjektZmenyProstoru{
     private void zalozProstoryHry() {
         // vytvářejí se jednotlivé prostory  
       
-        Prostor apartment = new Prostor("apartment", "One room apartment. You can see pretty messy table with some penciles and sheets of paper (apparently you did some drawings last night). ", 50.00, 50.00);
+        Prostor apartment = new Prostor("apartment", "One room apartment. You can see pretty messy table with some penciles and sheets of paper (apparently you did some drawings last night). ", 90.00, 665.00);
         Item penciles = new Item("pencils", "old", 'h', 5, 3);
         apartment.addItem(penciles);
         Npc eDI = new Npc("EDI", 'r', "Hello my old friend. I seem to be lost ... What am I supposed to do without you.", 3, true);
@@ -59,11 +61,11 @@ public class HerniPlan implements SubjektZmenyProstoru{
         Item table = new Item("table", "Old plastic table");
         apartment.addItem(table);
         
-        Prostor ruinedApartement = new Prostor("RuinedApartement", "Dirty ruined apartment where no one lives. But there is some screwdriver on the floor…", 50.00, 500.00);
+        Prostor ruinedApartement = new Prostor("RuinedApartement", "Dirty ruined apartment where no one lives. But there is some screwdriver on the floor…", 70.00, 710.00);
         Item screwdriver = new Item("Screwdriver", "Weird looking screwdriver", 'r', 8, 3);
         ruinedApartement.addItem(screwdriver);
         
-        Prostor square = new Prostor("Square", "Massive open space where is a statue in the center.", 50.00, 50.00);
+        Prostor square = new Prostor("Square", "Massive open space where is a statue in the center.", 120.00, 765.00);
         Item angelStat = new Item("AngelStatue", "Metalic angle statue holding a shiny orb looking technology. Symbolizes peace between robots and humans.");
         square.addItem(angelStat);
         Npc krista = new Npc("Krista", 'h', "There is no peace between us and robots, is no there?", 3, true);
@@ -79,7 +81,7 @@ public class HerniPlan implements SubjektZmenyProstoru{
         ruinedApartement.setVychod(square);
         ruinedApartement.setVychod(apartment);
         
-        Prostor crwdStreet = new Prostor("CrowdedStreet", "Noisy street full of vendors trying to sell their goods.", 50.00, 50.00);
+        Prostor crwdStreet = new Prostor("CrowdedStreet", "Noisy street full of vendors trying to sell their goods.", 120.00, 765.00);
         Item ribbon = new Item("Ribbon", "Bright red ribbon.", 'h', 8, 5);
         crwdStreet.addItem(ribbon);
         Item coin = new Item("Coin", "BitCoin", 'r', 8, 5);
@@ -101,7 +103,7 @@ public class HerniPlan implements SubjektZmenyProstoru{
         aki.addConversationOpt(5, "I don't buy from robots.");
         crwdStreet.addNpc(aki);
         
-        Prostor subway = new Prostor("Subway", "Old subway station. Was not used for a long time.", 50.00, 50.00);
+        Prostor subway = new Prostor("Subway", "Old subway station. Was not used for a long time.", 250.00, 920.00);
         Item laptop = new Item("Lenovo", "Not working anymore", 'h', 3, 3);
         subway.addItem(laptop);
         Item redOrb = new Item("RedOrb", "Bright red light.", 'r', 3, 3);
@@ -112,7 +114,7 @@ public class HerniPlan implements SubjektZmenyProstoru{
         square.setVychod(subway);
         square.setVychod(crwdStreet);
         
-        Prostor slums = new Prostor("Slums", "Doesn't look good .. There is lot of sick people, and one poor looking man.", 50.00, 50.00);
+        Prostor slums = new Prostor("Slums", "Doesn't look good .. There is lot of sick people, and one poor looking man.", 200.00, 820.00);
         Item garbage = new Item("GarbagePile", "Piles and piles of garbage");
         slums.addItem(garbage);
         Npc gil = new Npc("Gil", 'h', "*Cough* Hey you *cough* please could you help me?", 4, true);
@@ -123,7 +125,7 @@ public class HerniPlan implements SubjektZmenyProstoru{
         gil.addConversationOpt(5, "What happend to you? Of course I'll help.");
         slums.addNpc(gil);
         
-        Prostor emptyStr = new Prostor("EmptyStreet", "There is almost no one on the street but the atmosphere has strange soothing feeling. With beautifull human looking woman.", 50.00, 50.00);
+        Prostor emptyStr = new Prostor("EmptyStreet", "There is almost no one on the street but the atmosphere has strange soothing feeling. With beautifull human looking woman.", 140.00, 859.00);
         Npc femShep = new Npc("FemShep9000", 'r', "**Seductive voice**\nHey man ... Are you lonely?", 4, true);
         femShep.addConversationOpt(1, "Too old model for me.");
         femShep.addConversationOpt(2, "Do you have massage settings?");
@@ -138,7 +140,7 @@ public class HerniPlan implements SubjektZmenyProstoru{
         slums.setVychod(crwdStreet);
         emptyStr.setVychod(crwdStreet);
         
-        Prostor tunnel = new Prostor("Tunnel", "Dark and wet tunnel. With someone brave and someone plastic.", 50.00, 50.00);
+        Prostor tunnel = new Prostor("Tunnel", "Dark and wet tunnel. With someone brave and someone plastic.", 305.00, 675.00);
         Item moss = new Item("Moss", "Slimy .... but ever present");
         tunnel.addItem(moss);
         Npc amy = new Npc("AmyPond", 'h', "Hey ... you remind me of someone ... someone with a box.", 10, true);
@@ -156,7 +158,7 @@ public class HerniPlan implements SubjektZmenyProstoru{
         rorry.addConversationOpt(5, "I will make sure Doctor hears from you. **Whispers** I have number to T.A.R.D.I.S.");
         tunnel.addNpc(rorry);
         
-        Prostor abandonedTrain = new Prostor("AbandonedTrain", "Broken, scratched train. And it stinks in here.", 50.00, 50.00);
+        Prostor abandonedTrain = new Prostor("AbandonedTrain", "Broken, scratched train. And it stinks in here.", 300.00, 850.00);
         Item goldenWatch = new Item("GoldenWatch", "The clock is stopped at 5:25 AM July 16th 1945.", 'h', 10, 10);
         abandonedTrain.addItem(goldenWatch);
         
@@ -166,7 +168,7 @@ public class HerniPlan implements SubjektZmenyProstoru{
         tunnel.setVychod(subway);
         abandonedTrain.setVychod(subway);
         
-        Prostor workShop = new Prostor("WorkShop", "Silent. There is man searhing for his screwdriver", 50.00, 50.00);
+        Prostor workShop = new Prostor("WorkShop", "Silent. There is man searhing for his screwdriver", 275.00, 115.00);
         Npc hefaistos = new Npc("Hefaistos", 'r', "Have you seen my screwdriver?", 15, false);
         hefaistos.addConversationOpt(1, "Yes ... maybe somewhere on a street?");
         hefaistos.addConversationOpt(2, "Yes in apartement.");
@@ -235,6 +237,10 @@ public class HerniPlan implements SubjektZmenyProstoru{
     
     public void setVictoryRoom(Prostor prostor){
         this.victoryRoom = prostor;
+    }
+    
+    public Hra getHra(){
+        return hra;
     }
 
     @Override

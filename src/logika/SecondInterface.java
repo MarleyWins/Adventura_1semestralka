@@ -20,7 +20,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Optional;
 import javafx.scene.control.TextInputDialog;
-import javafx.stage.StageStyle;
 import main.Start;
 
 /**
@@ -42,7 +41,7 @@ public class SecondInterface implements ITextInterface{
     public String useInput(String reason) {
         
         if (Start.getVersion().equals("GUI")) {
-//TODO REVISION CONTEXT TEXTU
+
             TextInputDialog dialog = new TextInputDialog();          
             
             dialog.setTitle("Choice");    

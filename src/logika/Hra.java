@@ -23,7 +23,7 @@ public class Hra implements IHra {
      * seznam platných příkazů.
      */
     public Hra() {
-        herniPlan = new HerniPlan();
+        herniPlan = new HerniPlan(this);
         platnePrikazy = new SeznamPrikazu();
         ending = new EndingSequence();
         platnePrikazy.vlozPrikaz(new PrikazNapoveda(platnePrikazy));

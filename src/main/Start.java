@@ -147,8 +147,17 @@ public class Start extends Application {
         MenuItem forceEnd = new MenuItem("Quit");
 
         newGame.setAccelerator(KeyCombination.keyCombination("CTRL+N"));
-        forceEnd.setAccelerator(KeyCombination.keyCombination("End"));
-
+        newGame.setOnAction((ActionEvent e) -> {
+                stage.close();
+                Stage stage1 = new Stage();
+            try {
+                start(stage1);
+            } catch (Exception ex) {
+                System.out.println("Something went wrong");
+            }
+        });
+        
+        forceEnd.setAccelerator(KeyCombination.keyCombination("CTRL+E"));
         forceEnd.setOnAction((ActionEvent e) -> {
             stage.close();
         });

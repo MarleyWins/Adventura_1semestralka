@@ -44,7 +44,7 @@ public class TopPane implements ObserverZmenyProstoru {
         mapAnchorPane = new AnchorPane();
         mapAnchorPane.getChildren().add(map);
         
-        circle = new Circle(10, Paint.valueOf("blue"));
+        circle = new Circle(10, Paint.valueOf("yellow"));
         AnchorPane.setTopAnchor(circle, plan.getAktualniProstor().getTopAnchor());
         AnchorPane.setLeftAnchor(circle, plan.getAktualniProstor().getLeftAnchor());
         circle.setVisible(true);
